@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sjupyter
+  labels:
+    app: k8sjupyter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8sjupyter
+  template:
+    metadata:
+      labels:
+        app: k8sjupyter
+    spec:
+      containers:
+      - name: minimal-notebook
+        image: jupyter/minimal-notebook:latest
+        ports:
+        - containerPort: 8888
